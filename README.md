@@ -27,8 +27,8 @@ The movie booked by the user will be stored in database and is retrived and show
     Used for making api calls.
 
 #### Contributors :    
-  1. Darshan Vasani[Profile](https://github.com/dpvasani).
-  2. Krupali Desai[Profile](https://github.com/dkrupali56).
+  1. Darshan Vasani |  [Profile](https://github.com/dpvasani).
+  2. Krupali Desai  |  [Profile](https://github.com/dkrupali56).
 
 
 #### Contributions are always welcome!
