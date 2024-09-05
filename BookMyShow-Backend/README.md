@@ -13,9 +13,6 @@ This backend it built on top of Node.js where the user data is being stored and 
 
     To store and retrive the data of the user.
 
-### Usage 
-It takes the user data from the [Front-end](https://github.com/AhmedShahnawaz/BookMyShow-Frontend-main) and uses [Mongo DB Atlas](https://www.mongodb.com/cloud/atlas/register) to store the data recieved and fetches the data back from the database to show the user that the 
-operation was successfully completed.
 
 ### End points
 1. `Post` [url](https://bookmyshow-backend-main.onrender.com)/api/booking 
