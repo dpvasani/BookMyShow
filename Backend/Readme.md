@@ -1,96 +1,105 @@
-# Backend-Template
+# Backend Setup for BookMyShow
 
-This repository provides a production-grade backend template for Node.js applications using Express.js and MongoDB. It includes a foundational structure, environment configuration, and a basic User model to help jump start backend development.
+This is the backend API for the BookMyShow application. The backend is built with Node.js and connects to MongoDB for storing data. The project includes standardized API responses, custom error handling, and asynchronous handling for better performance and error management.
 
-## Features
+## Project Structure
 
-- **Production-Grade Setup**: Configured for scalability, security, and performance.
-- **Express.js**: Minimalist web framework for routing and middleware.
-- **MongoDB**: Integrated with Mongoose ORM for schema management and database operations.
-- **User Model**: Pre-configured with basic fields like `name`, `email`, and `password`.
-- **Prettier**: Code formatting with custom rules for maintaining code consistency.
-- **Environment Configuration**: `.env` file for secure storage of sensitive data (e.g., database credentials, API keys).
-- **Git Best Practices**: `.gitignore` for keeping sensitive files out of version control.
+The backend is organized as follows:
 
-## Folder Structure
-
-```bash
-Backend-Template/
-├── public/                    # Public assets (if any)
-│   └── temp/                  # Temporary files or uploads
-├── src/                       # Main application code
-│   ├── controllers/           # Route controllers (business logic)
-│   ├── models/                # Mongoose models (database schema)
-│   ├── routes/                # Route definitions (API endpoints)
-│   ├── middlewares/           # Custom middleware (e.g., authentication)
-│   ├── config/                # Configuration files (e.g., database setup)
-│   ├── services/              # Service logic (e.g., external API calls, utilities)
-│   └── app.js                 # Main application file
-├── .env                       # Environment variables
-├── .gitignore                 # Ignored files for version control
-├── .prettierignore            # Files ignored by Prettier
-├── .prettierrc                # Prettier configuration
-├── package.json               # Project dependencies and scripts
-├── package-lock.json          # Lockfile for consistent dependency versions
-└── README.md                  # Project documentation
+```
+Backend/
+│
+├── public/           # Static files (images, CSS, etc.)
+├── src/              # Main source code
+│   ├── controllers/  # Business logic for handling requests
+│   ├── db/           # Database configurations and scripts
+│   ├── models/       # Mongoose models (schemas)
+│   ├── routes/       # API route definitions
+│   ├── utils/        # Utility functions or helpers
+│   ├── app.js        # Main app file, entry point for the server
+│   ├── constants.js  # Constants used in the application
+│   ├── index.js      # Starting point of the application
+├── .env              # Environment variables
+├── .gitignore        # Git ignore file
+├── package.json      # Project metadata and dependencies
+├── package-lock.json # Lock file for dependencies
+└── Readme.md         # Project readme file
 ```
 
-## Getting Started
+## Setup Instructions
 
-### Prerequisites
+Follow these steps to get the backend running locally:
 
-- Node.js (v14 or later)
-- MongoDB (local or cloud instance)
-- Environment variables configured in a `.env` file
+### 1. Clone the Repository
 
-### Environment Variables
-
-Create a `.env` file in the root directory and add the following:
+Clone the repository to your local machine:
 
 ```bash
-# Example .env file
-
-DB_CONNECTION_STRING=mongodb://localhost:27017/your-db-name
-PORT=3000
-JWT_SECRET=your-secret-key
+git clone <repository-url>
+cd BookMyShow/Backend
 ```
 
-### Installation
+### 2. Install Dependencies
 
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/dpvasani/Backend-Template.git
-   cd Backend-Template
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-3. Set up your MongoDB connection in the `.env` file.
-
-4. Start the server:
-
-   ```bash
-   npm run start
-   ```
-
-### Running in Production
-
-To run in production, make sure your environment is correctly configured, and use a process manager like **PM2** for managing the application in production environments:
+Run the following command to install the necessary dependencies:
 
 ```bash
-npm install -g pm2
-pm2 start src/app.js --name backend-template
+npm install
 ```
 
-## Contributing
+### 3. Configure Environment Variables
 
-Feel free to open issues or create pull requests if you have suggestions for improvements!
+Create a `.env` file in the root directory with the following content:
+
+```
+PORT=4000
+MONGODB_URL=<Your MongoDB connection URL>
+CORS_ORIGIN=*
+MODE=development
+```
+
+Make sure to replace `<Your MongoDB connection URL>` with your actual MongoDB connection string.
+
+### 4. Start the Server
+
+Run the server using the following command:
+
+```bash
+npm start
+```
+
+The server will start on port `4000` by default.
+
+## Key Features Added
+
+### 1. Standardized Response
+The API uses a consistent response format by utilizing `ApiResponse` to ensure all responses follow the same structure. This improves the predictability of the API and simplifies client-side development.
+
+### 2. Error Handling
+Custom error handling is implemented with `ApiError`, allowing for more detailed error messages and better insight into issues that may arise during API requests.
+
+### 3. Async Handling
+All route controllers are wrapped in `asyncHandler` to ensure that asynchronous errors are handled correctly. This prevents unhandled promise rejections and improves the stability of the backend.
+
+## Prettier Setup
+
+Prettier is installed globally to ensure code consistency. You can format your code by running:
+
+```bash
+npx prettier --write .
+```
+
+This will automatically format all the code files in the project.
+
+## Dependencies
+
+- **Express**: Web framework for Node.js
+- **Mongoose**: MongoDB object modeling
+- **CORS**: Cross-Origin Resource Sharing middleware
+- **dotenv**: Load environment variables from a `.env` file
+- **Prettier**: Code formatter
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+```
